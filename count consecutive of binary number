@@ -1,0 +1,48 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+
+
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        int n = scanner.nextInt();
+        ArrayList<Integer> arrnum = new ArrayList<Integer>();
+    
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+        while(n!=0)
+        {
+            arrnum.add(n % 2);;
+            n = n/2;
+        }
+        Collections.reverse(arrnum);
+        
+        int max = 0,count=0,num;
+        for(int i=0;i<arrnum.size();i++)
+        {
+            num = arrnum.get(i);
+            if(num == 1)
+            {
+                count++;
+                //max = count;
+            }
+            else{
+                    
+                if(count!=0 && !(max>count))
+                {
+                max = count;
+                count = 0;
+                }
+            }
+        }
+        System.out.println(max);
+        scanner.close();
+    }
+}
